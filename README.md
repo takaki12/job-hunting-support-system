@@ -3,4 +3,3 @@
 
 ## フォルダ構造
 src : コード
-templates:htmlなど
