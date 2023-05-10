@@ -18,7 +18,6 @@ class UserInformation(users_db.Model):
     id = users_db.Column(users_db.Integer, primary_key=True)
     name = users_db.Column(users_db.String(20), nullable=False)
     strong = users_db.Column(users_db.String(200), nullable=False)
-    week = users_db.Column(users_db.String(200), nullable=False)
 
 @app.route('/')
 def top():

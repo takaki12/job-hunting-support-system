@@ -8,7 +8,7 @@ templates : htmlなど
 ・login : ログインページ  
 ・main  : メインページ  
 ・mypage : ユーザの情報の参照・変更ページ  
-・signin : サインイン  
+・signup : サインアップ  
 ・top : ログインとサインインにつなぐトップページ  
 
 ## マイページ
