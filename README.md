@@ -4,7 +4,8 @@
 ## フォルダ構造
 src : コード  
 templates : htmlなど  
-・admin : 管理者用ページ  
+・admin : 管理者用ページ(ユーザ一覧とそれらの編集、削除)  
+・admin_update : ユーザ情報の編集  
 ・login : ログインページ  
 ・main  : メインページ  
 ・mypage : ユーザの情報の参照・変更ページ  
@@ -12,4 +13,4 @@ templates : htmlなど
 ・top : ログインとサインインにつなぐトップページ  
 
 ## マイページ
-ユーザ情報 : 名前(text), 強み(text), 弱み(text)  
+ユーザ情報 : 名前(text), 強み(text)  
