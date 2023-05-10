@@ -1,7 +1,7 @@
 import os
 from flask import Flask
 from flask import render_template, request, redirect
-from flask_login import login_user
+from flask_login import login_user, LoginManager, login_manager, login_required, logout_user, UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 
@@ -9,10 +9,14 @@ app = Flask(__name__)
 # データベースの設定
 db_path = ""
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+ db_path + 'users.db'
+app.config['SECRET_KEY'] = os.urandom(24)
 users_db = SQLAlchemy(app)
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+
 # ユーザクラス
-class UserInformation(users_db.Model):
+class UserInformation(UserMixin, users_db.Model):
     id = users_db.Column(users_db.Integer, primary_key=True)
     name = users_db.Column(users_db.String(20), nullable=False)
     password = users_db.Column(users_db.String(100), nullable=False)
@@ -23,6 +27,7 @@ def top():
     return render_template('top.html')
 
 @app.route('/mypage')
+@login_required
 def mypage():
     return render_template('mypage.html')
 
@@ -73,13 +78,25 @@ def login():
         user = UserInformation.query.filter_by(name=name).first()
         # パスワードチェック
         if check_password_hash(user.password, password):
+            login_user(user)
             return redirect('/main')
     else:
         return render_template('login.html')
     
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect('/login')
+    
 @app.route('/main')
+@login_required
 def main():
     return render_template('main.html')
+
+@login_manager.user_loader
+def load_user(user_id):
+    return UserInformation.query.get(int(user_id))
 
 if __name__ == "__main__":
     # データベース作成
