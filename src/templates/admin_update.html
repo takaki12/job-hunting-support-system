@@ -5,13 +5,13 @@
         <title>Signup</title>
     </head>
     <body>
-        <h1>サインアップ</h1>
+        <h1>ユーザー情報編集</h1>
         <form method="POST">
             <label for="name">名前</label>
-            <input type="text" name="name">
+            <input type="text" name="name" value={{user.name}}>
             <label for="strong">強み</label>
-            <input type="text" name="strong">
-            <input type="submit" value="新規登録">
+            <input type="text" name="strong" value={{user.strong}}>
+            <input type="submit" value="更新">
         </form>
     </body>
 </html>
