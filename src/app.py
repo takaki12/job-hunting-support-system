@@ -1,6 +1,8 @@
 import os
 from flask import Flask
 from flask import render_template, request, redirect
+from flask_login import login_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -13,6 +15,7 @@ users_db = SQLAlchemy(app)
 class UserInformation(users_db.Model):
     id = users_db.Column(users_db.Integer, primary_key=True)
     name = users_db.Column(users_db.String(20), nullable=False)
+    password = users_db.Column(users_db.String(100), nullable=False)
     strong = users_db.Column(users_db.String(200), nullable=False)
 
 @app.route('/')
@@ -33,9 +36,10 @@ def admin():
 def signup():
     if request.method == 'POST':
         name = request.form.get('name')
+        password = request.form.get('password')
         strong = request.form.get('strong')
         # DBに登録
-        user = UserInformation(name=name, strong=strong)
+        user = UserInformation(name=name, password=generate_password_hash(password, method='sha256'), strong=strong)
         users_db.session.add(user)
         users_db.session.commit()
         return redirect('/')
@@ -59,6 +63,23 @@ def delete(id):
     users_db.session.delete(user)
     users_db.session.commit()
     return redirect('/admin')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        password = request.form.get('password')
+        # 入力からDB内のユーザ情報を取得
+        user = UserInformation.query.filter_by(name=name).first()
+        # パスワードチェック
+        if check_password_hash(user.password, password):
+            return redirect('/main')
+    else:
+        return render_template('login.html')
+    
+@app.route('/main')
+def main():
+    return render_template('main.html')
 
 if __name__ == "__main__":
     # データベース作成
