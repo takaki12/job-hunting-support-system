@@ -47,7 +47,7 @@ def signup():
         user = UserInformation(name=name, password=generate_password_hash(password, method='sha256'), strong=strong)
         users_db.session.add(user)
         users_db.session.commit()
-        return redirect('/')
+        return redirect('/signin')
     else:
         return render_template('signup.html')
     
@@ -69,8 +69,8 @@ def delete(id):
     users_db.session.commit()
     return redirect('/admin')
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():
     if request.method == 'POST':
         name = request.form.get('name')
         password = request.form.get('password')
@@ -81,13 +81,13 @@ def login():
             login_user(user)
             return redirect('/main')
     else:
-        return render_template('login.html')
+        return render_template('signin.html')
     
-@app.route('/logout')
+@app.route('/signout')
 @login_required
-def logout():
+def signout():
     logout_user()
-    return redirect('/login')
+    return redirect('/signin')
     
 @app.route('/main')
 @login_required
