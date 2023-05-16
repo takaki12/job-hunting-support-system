@@ -25,7 +25,7 @@ python3.10以上のvenvを作成し、必要なライブラリをインポート
 $ python3 -m venv .venv
 $ pip install -r requirements.txt
 ```
-システム立ち上げ
+システム立ち上げ(バックグラウンド推奨)
 ```
 ./run.sh
 ```
