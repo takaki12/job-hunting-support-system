@@ -27,7 +27,7 @@ $ pip install -r requirements.txt
 ```
 システム立ち上げ
 ```
-python src/app.py
+./run.sh
 ```
 以下のURLをブラウザで開く
 ```
