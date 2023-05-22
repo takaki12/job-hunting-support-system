@@ -5,6 +5,8 @@ from flask_login import login_user, LoginManager, login_manager, login_required,
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 
+from generate_text import generate
+
 app = Flask(__name__)
 # データベースの設定
 db_path = ""
@@ -29,10 +31,16 @@ def top():
     return render_template('top.html')
 
 # メインページ
-@app.route('/main')
+@app.route('/main', methods=['GET', 'POST'])
 @login_required
 def main():
-    return render_template('main.html')
+    if request.method == 'POST':
+        # テキスト生成
+        input_text = request.form.get('input_text')
+        text = generate(input_text)
+        return render_template('main.html', text=text)
+    else:
+        return render_template('main.html')
 
 # マイページ
 @app.route('/mypage')
