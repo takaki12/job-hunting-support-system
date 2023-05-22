@@ -2,16 +2,17 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title><main></main></title>
+        <title>main</title>
     </head>
     <body>
         <h1>メインページ</h1>
         <p>情報を入力してください</p>
-        <form method="POST">
-            <label for="name">ユーザ名</label>
-            <input type="text" name="name">
-
-            <input type="submit" value="生成">
+        <form id="inputForm">
+            <input type="text" name="data" id="dataInput">
+            <input type="button" value="submit" onclick="postData()">
         </form>
+          
+        <div id="result"></div>
+        <script src="src/static/js/function.js"></script>
     </body>
 </html>

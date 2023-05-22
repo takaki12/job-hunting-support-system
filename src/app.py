@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 from generate_text import generate
 
+
 app = Flask(__name__)
 # データベースの設定
 db_path = ""
@@ -36,9 +37,8 @@ def top():
 def main():
     if request.method == 'POST':
         # テキスト生成
-        input_text = request.form.get('input_text')
-        text = generate(input_text)
-        return render_template('main.html', text=text)
+        data = request.form.get('data')
+        return render_template('main.html', data=data, text=generate(data))
     else:
         return render_template('main.html')
 
@@ -116,6 +116,7 @@ def signout():
 @login_manager.user_loader
 def load_user(user_id):
     return UserInformation.query.get(int(user_id))
+
 
 if __name__ == "__main__":
     # データベース作成
