@@ -6,7 +6,12 @@
     </head>
     <body>
         <h1>メインページ</h1>
-        <p>ようこそ!</p>
-        <a href="/signout" role="button">サインアウト</a>
+        <p>情報を入力してください</p>
+        <form method="POST">
+            <label for="name">ユーザ名</label>
+            <input type="text" name="name">
+
+            <input type="submit" value="生成">
+        </form>
     </body>
 </html>
