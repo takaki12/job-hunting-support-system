@@ -38,7 +38,8 @@ def main():
     if request.method == 'POST':
         # テキスト生成
         data = request.form.get('data')
-        return render_template('main.html', data=data, text=generate(data))
+        output = generate(data)
+        return render_template('main.html', output=output)
     else:
         return render_template('main.html')
 
