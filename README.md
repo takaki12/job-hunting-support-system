@@ -5,6 +5,7 @@
 <pre>
 .  
 ├── instance  
+│   └── users.db  
 ├── src  
 │   ├── static  
 │   │   ├── css  
@@ -23,15 +24,21 @@
 ├── requirements.txt  
 └── run.sh
 </pre>
-src : コード  
-templates : htmlなど  
-・admin : 管理者用ページ(ユーザ一覧とそれらの編集、削除)  
-・admin_update : ユーザ情報の編集  
-・login : ログインページ  
-・main  : メインページ  
-・mypage : ユーザの情報の参照・変更ページ  
-・signup : サインアップ  
-・top : ログインとサインインにつなぐトップページ  
+### 詳細
+- instance : データベースが保存されている
+- src : 本システムで使用しているコード置き場  
+  - templates : htmlなど  
+    - admin_update : ユーザ情報の編集  
+    - admin : 管理者用ページ(ユーザ一覧とそれらの編集、削除)  
+    - main : メインページ  
+    - mypage : ユーザの情報の参照・変更ページ  
+    - signin : サインイン
+    - signup : サインアップ  
+    - top : ログインとサインインにつなぐトップページ  
+  - app.py : webシステムと各ページの定義  
+  - generate_text.py : 志望動機を生成する  
+- requirements.txt : 必要ライブラリ  
+- run.sh : システム起動  
 
 ## マイページ
 ユーザ情報 : 名前(text), 強み(text)  
