@@ -2,6 +2,27 @@
 企業データを用いた就活支援システムの構築
 
 ## フォルダ構造
+<pre>
+.  
+├── instance  
+├── src  
+│   ├── static  
+│   │   ├── css  
+│   │   └── js  
+│   │       └── function.js  
+│   ├── templates  
+│   │   ├── admin_update.html  
+│   │   ├── admin.html  
+│   │   ├── main.html  
+│   │   ├── mypage.html  
+│   │   ├── signin.html  
+│   │   ├── signup.html  
+│   │   └── top.html  
+│   ├── app.py  
+│   └── generate_text.py  
+├── requirements.txt  
+└── run.sh
+</pre>
 src : コード  
 templates : htmlなど  
 ・admin : 管理者用ページ(ユーザ一覧とそれらの編集、削除)  
