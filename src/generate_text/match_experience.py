@@ -30,3 +30,4 @@ def match_experience(condition, experience):
     #エラー処理はまた後で考える（もう一度判定させるのかどうか）
     else:
         return 3
+    
