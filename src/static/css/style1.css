@@ -25,11 +25,6 @@ header {
     cursor: pointer;
 }
 
-a:link, a:visited, a:hover, a:active {
-    text-decoration: none;
-    color: #fff;
-}
-
 .menu-item:hover {
     background-color: #f1c40f;
     color: #fff;
@@ -54,6 +49,13 @@ a:link, a:visited, a:hover, a:active {
 .signinup-item:hover {
     background-color: #f1c40f;
     color: #fff;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    
 }
 
 p.catchphrase {
