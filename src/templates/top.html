@@ -3,10 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../static/css/style1.css">
-        <title>Hello world</title>
+        <title>Top Page</title>
     </head>
     <body>
         <h1>就活支援システム(仮)</h1>
+        <ul class="signinup-group">
+            <li class="signinup-item"><a href="/signin" role="button">サインイン</a></li>
+            <li class="signinup-item"><a href="/signup" role="button">サインアップ</a></li>
+            {% for user in users %}
+            <user>
+                <h2>{{ user.name }}</h2>
+                <p>強み：{{ user.strong }}</p>
+            </user>
+            {% endfor %}
+        </ul>
+        <!--
         <a href="/signin" role="button">サインイン</a>
         <br>
         <a href="/signup" role="button">サインアップ</a>
@@ -16,5 +27,8 @@
             <p>強み：{{ user.strong }}</p>
         </user>
         {% endfor %}
+        -->
+        <p class="catchphrase">いい感じの、<br>キャッチコピー</p>
+        <p class="catchphrase_eng">Nice, Better Catchphrase <p>
     </body>
 </html>

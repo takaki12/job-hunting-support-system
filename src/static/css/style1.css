@@ -12,5 +12,55 @@ header {
 .menu-item {
     list-style: none;
     display: inline-block;
-    padding: 10px;
+    padding: 10px 0;
+    background-color: #ee6354;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+    width: 120px;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #fff;
+}
+
+.menu-item:hover {
+    background-color: #f1c40f;
+    color: #fff;
+}
+
+.signinup-item {
+    list-style: none;
+    display: inline-block;
+    padding: 10px 0;
+    background-color: #ee6354;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+    width: 120px;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.signinup-item:hover {
+    background-color: #f1c40f;
+    color: #fff;
+}
+
+p.catchphrase {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+p.catchphrase_eng {
+    font-size: 15px;
 }
