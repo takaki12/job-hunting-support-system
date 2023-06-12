@@ -1,5 +1,4 @@
 import openai
-
 # OpenAI APIの設定
 openai.api_key = ''  # 自分のAPIキーに置き換えてください
 
