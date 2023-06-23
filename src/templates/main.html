@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="../static/css/style1.css">
-        <title>main</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     </head>
     <body>
         <header>
@@ -13,16 +13,10 @@
                 <li class="menu-item"><a class="static-button" href="/mypage">MyPage</a></li>
             </ul>
         </header>
-        <p>情報を入力してください</p>
-        <form id="inputForm", method="POST">
-            <input type="text" name="data" id="dataInput">
-            <input type="submit" value="submit">
-            <!-- <input type="button" value="submit" onclick="postData()"> -->
+        <form id="inputForm", method="POST" autocomplete="off" class='input-form'>
+            <input type="text" name="data" id="dataInput" class="form">
+            <input type="submit" value="&#xf1d8;" class="fas send-button">
         </form>
-
-        <p>{{output}}</p>
-          
-        <!-- <div id="result"></div>
-        <script src="src/static/js/function.js"></script> -->
+        <p class="output">{{output}}</p>
     </body>
 </html>
