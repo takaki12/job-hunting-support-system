@@ -1,9 +1,13 @@
 import openai
+from match_experience import match_experience
 
 openai.api_key = "" #前述で発行したAPIをKeyに置き換えてください
 
-def generate_text(occupation, matched_experience, business_content, lower_limit, upper_limit):
-
+def generate_text(occupation, condition, experience, business_content, lower_limit, upper_limit):
+    
+    #採用条件とマッチする経験を取得
+    matched_experience = match_experience(condition, experience)
+    
     prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。\n応募職種：{occupation}\n自身の強み{matched_experience}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, matched_experience=matched_experience, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
 
     # 対話の初期化
