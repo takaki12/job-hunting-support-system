@@ -6,17 +6,19 @@
         <title>Top Page</title>
     </head>
     <body>
-        <h1>就活支援システム(仮)</h1>
-        <ul class="signinup-group">
-            <li class="signinup-item"><a href="/signin" role="button">サインイン</a></li>
-            <li class="signinup-item"><a href="/signup" role="button">サインアップ</a></li>
-            {% for user in users %}
-            <user>
-                <h2>{{ user.name }}</h2>
-                <p>強み：{{ user.strong }}</p>
-            </user>
-            {% endfor %}
-        </ul>
+        <div class="top-header">
+            <h1 class="name">就活支援システム(仮)</h1>
+            <ul class="signinup-group">
+                <li class="signinup-item"><a class="signinup-button" href="/signin" role="button">サインイン</a></li>
+                <li class="signinup-item"><a class="signinup-button" href="/signup" role="button">サインアップ</a></li>
+                {% for user in users %}
+                <user>
+                    <h2>{{ user.name }}</h2>
+                    <p>強み：{{ user.strong }}</p>
+                </user>
+                {% endfor %}
+            </ul>
+        </div>
         <!--
         <a href="/signin" role="button">サインイン</a>
         <br>
@@ -30,5 +32,12 @@
         -->
         <p class="catchphrase">いい感じの、<br>キャッチコピー</p>
         <p class="catchphrase_eng">Nice, Better Catchphrase <p>
+        <p class="description">
+            説明説明説明説明説明説明<br>
+            説明説明説明説明説明説明<br>
+            説明説明説明説明説明説明<br>
+            説明説明説明説明説明説明<br>
+            説明説明説明説明説明説明
+        </p>
     </body>
 </html>
