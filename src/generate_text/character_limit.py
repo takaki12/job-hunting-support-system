@@ -1,6 +1,6 @@
 import openai
 # OpenAI APIの設定
-openai.api_key = ''  # 自分のAPIキーに置き換えてください
+openai.api_key = ""  # 自分のAPIキーに置き換えてください
 
 #gptへの支持
 theme = "gptへの指示をここに入力してください。"
