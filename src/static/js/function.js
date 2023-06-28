@@ -5,7 +5,7 @@ function postData() {
     var xhr = new XMLHttpRequest();
   
     // POSTリクエストを作成
-    xhr.open("POST", "src/generate_text.py", true);
+    xhr.open("POST", "src/generate_text.py");
   
     // リクエストヘッダを設定
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
