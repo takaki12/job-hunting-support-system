@@ -8,9 +8,12 @@
 │   └── users.db  
 ├── src  
 │   ├── generate_text  
+│   │   ├── character_limit.py  
+│   │   ├── generate_text.py  
 │   │   └── match_experience.py  
 │   ├── static  
 │   │   ├── css  
+│   │   │   └── style1.css    
 │   │   └── js  
 │   │       └── function.js  
 │   ├── templates  
@@ -29,6 +32,8 @@
 ### 詳細
 - instance : データベースが保存されている
 - src : 本システムで使用しているコード置き場  
+  - generate_text : 文章生成プログラム
+  - static : cssやJavaScriptなど
   - templates : htmlなど  
     - admin_update : ユーザ情報の編集  
     - admin : 管理者用ページ(ユーザ一覧とそれらの編集、削除)  
