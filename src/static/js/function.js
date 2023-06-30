@@ -1,7 +1,6 @@
 function postData() {
-    var data1 = document.getElementById("dataInput1").value;
-    var data2 = document.getElementById("dataInput2").value;
-    var data3 = document.getElementById("dataInput3").value;
+    var lower = document.getElementById("lower-limit").value;
+    var upper = document.getElementById("upper-limit").value;
 
     // XMLHttpRequestオブジェクトを作成
     var xhr = new XMLHttpRequest();
@@ -22,6 +21,8 @@ function postData() {
     };
   
     // データを送信
-    xhr.send("data1=" + encodeURIComponent(data1) + "&data2=" + encodeURIComponent(data2) + "&data3=" + encodeURIComponent(data3));
+    xhr.send(
+      "lower=" + encodeURIComponent(lower) + "&upper=" + encodeURIComponent(upper)
+    );
   }
   

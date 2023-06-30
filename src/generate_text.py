@@ -1,9 +1,9 @@
 # import time
 
-def generate(input_text, input_text2, input_text3):
-    print(input_text, input_text2, input_text3)
+def generate(lower_limit, upper_limit):
+    print(lower_limit, upper_limit)
     # time.sleep(30) # debug: delay 30 seconds
     
-    text = input_text + input_text2 + input_text3 + "を生成しました"
+    text = lower_limit + "\n" + upper_limit + "\n"
     
     return text

@@ -110,17 +110,16 @@ h1.name {
     color: #fff;
 }
 
-.input-form {
+/* .input-form {
     border: 1px solid #000000;
     padding: 10px;
     width: 500px;
-}
+} */
 
 .form {
-    border: none;
+    border: 1px solid #000000;
     outline: none;
     background-color:transparent;
-    width: 93%;
 }
 
 .fas.send-button {
