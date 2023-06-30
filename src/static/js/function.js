@@ -1,6 +1,8 @@
 function postData() {
-    var data = document.getElementById("dataInput").value;
-  
+    var data1 = document.getElementById("dataInput1").value;
+    var data2 = document.getElementById("dataInput2").value;
+    var data3 = document.getElementById("dataInput3").value;
+
     // XMLHttpRequestオブジェクトを作成
     var xhr = new XMLHttpRequest();
   
@@ -20,6 +22,6 @@ function postData() {
     };
   
     // データを送信
-    xhr.send("data=" + encodeURIComponent(data));
+    xhr.send("data1=" + encodeURIComponent(data1) + "&data2=" + encodeURIComponent(data2) + "&data3=" + encodeURIComponent(data3));
   }
   

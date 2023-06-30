@@ -37,8 +37,10 @@ def top():
 def main():
     if request.method == 'POST':
         # テキスト生成
-        data = request.form.get('data')
-        output = generate(data)
+        data1 = request.form.get('data1')
+        data2 = request.form.get('data2')
+        data3 = request.form.get('data3')
+        output = generate(data1, data2, data3)
         return render_template('main.html', output=output)
     else:
         return render_template('main.html')
