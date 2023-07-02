@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../static/css/style1.css">
+        <title>Update</title>
+    </head>
+    <body>
+        <h1>ユーザー情報編集</h1>
+        <form method="POST">
+            <label for="id">ユーザーID</label>
+            <input type="id" name="id" value={{user.id}}>
+            <label for="name">名前</label>
+            <input type="text" name="name" value={{user.name}}>
+            <label for="strong">強み</label>
+            <input type="text" name="strong" value={{user.strong}}>
+            <input type="submit" value="更新" onclick="location.href='/mypage/{{id}}'">
+        </form>
+    </body>
+</html>

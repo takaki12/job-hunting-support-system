@@ -42,21 +42,37 @@ def top():
 @app.route('/main', methods=['GET', 'POST'])
 @login_required
 def main():
+    id = request.form.get('id')
     if request.method == 'POST':
         # テキスト生成
         lower = request.form.get('lower')
         upper = request.form.get('upper')
         print(lower, upper)
         output = generate(lower, upper)
-        return render_template('main.html', output=output)
+        return render_template('main.html', output=output, id=id)
     else:
-        return render_template('main.html')
+        return render_template('main.html', id=id)
 
 # マイページ
-@app.route('/mypage')
+@app.route('/mypage/<string:id>')
 @login_required
-def mypage():
-    return render_template('mypage.html')
+def mypage(id):
+    user = UserInformation.query.get(id)
+    return render_template('mypage.html', user=user)
+
+# ユーザによるユーザ情報更新
+@app.route('/own_update/<string:id>', methods=['GET', 'POST'])
+def own_update(id):
+    user = UserInformation.query.get(id)
+    if request.method == 'POST':
+        user.id = request.form.get('id')
+        user.name = request.form.get('name')
+        user.strong = request.form.get('strong')
+        users_db.session.commit()
+        id = user.id
+        return redirect('/mypage/' + id)
+    else:
+        return render_template('own_update.html', user=user)
 
 # 管理者ページ
 @app.route('/admin')
@@ -118,7 +134,7 @@ def signin():
         # パスワードチェック
         if check_password_hash(user.password, password):
             login_user(user)
-            return redirect('/main')
+            return render_template('main.html', id=id)
     else:
         return render_template('signin.html')
 
