@@ -31,7 +31,7 @@ class UserInformation(UserMixin, users_db.Model):
     id = users_db.Column(users_db.String(10), primary_key=True, autoincrement=False)
     name = users_db.Column(users_db.String(20), nullable=False)
     password = users_db.Column(users_db.String(100), nullable=False)
-    strong = users_db.Column(users_db.String(200), nullable=False)
+    experience = users_db.Column(users_db.String(500), nullable=False)
 
 # トップページ
 @app.route('/')
@@ -57,19 +57,22 @@ def main():
 @app.route('/mypage/<string:id>')
 @login_required
 def mypage(id):
-    user = UserInformation.query.get(id)
+    user = load_user(id)
     return render_template('mypage.html', user=user)
 
 # ユーザによるユーザ情報更新
 @app.route('/own_update/<string:id>', methods=['GET', 'POST'])
+@login_required
 def own_update(id):
-    user = UserInformation.query.get(id)
+    user = load_user(id)
     if request.method == 'POST':
         user.id = request.form.get('id')
         user.name = request.form.get('name')
-        user.strong = request.form.get('strong')
+        user.experience = request.form.get('experience')
         users_db.session.commit()
         id = user.id
+        # logout_user()
+        login_user(user)
         return redirect('/mypage/' + id)
     else:
         return render_template('own_update.html', user=user)
@@ -84,11 +87,11 @@ def admin():
 # 管理者によるユーザ情報更新
 @app.route('/admin_update/<string:id>', methods=['GET', 'POST'])
 def admin_update(id):
-    user = UserInformation.query.get(id)
+    user = load_user(id)
     if request.method == 'POST':
         user.id = request.form.get('id')
         user.name = request.form.get('name')
-        user.strong = request.form.get('strong')
+        user.experience = request.form.get('experience')
         users_db.session.commit()
         return redirect('/admin')
     else:
@@ -97,7 +100,7 @@ def admin_update(id):
 # 管理者によるユーザ情報削除
 @app.route('/admin_delete/<string:id>', methods=['GET'])
 def delete(id):
-    user = UserInformation.query.get(id)
+    user = load_user(id)
     users_db.session.delete(user)
     users_db.session.commit()
     return redirect('/admin')
@@ -109,12 +112,12 @@ def signup():
         id = randomid(10)
         name = request.form.get('name')
         password = request.form.get('password')
-        strong = request.form.get('strong')
+        experience = request.form.get('experience')
         # DBに登録
-        user = UserInformation(id=id, name=name, password=generate_password_hash(password, method='sha256'), strong=strong)
+        user = UserInformation(id=id, name=name, password=generate_password_hash(password, method='sha256'), experience=experience)
         users_db.session.add(user)
         users_db.session.commit()
-        return render_template('signup_confirm.html', id=id, name=name, password=password, strong=strong)
+        return render_template('signup_confirm.html', id=id, name=name, password=password, experience=experience)
     else:
         return render_template('signup.html')
     
@@ -140,7 +143,6 @@ def signin():
 
 # サインアウト
 @app.route('/signout')
-@login_required
 def signout():
     logout_user()
     return redirect('/signin')
