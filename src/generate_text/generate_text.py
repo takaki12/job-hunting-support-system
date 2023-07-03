@@ -9,9 +9,12 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
     matched_experience = match_experience(condition, experience)
     
     if matched_experience == 1:
-        prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。\n応募職種：{occupation}\n自身の強み{matched_experience}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, matched_experience=experience, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
+        prompt = "###指示###新卒の就活生の立場で、サマーインターンの志望動機を考えてください。\n###応募職種###：{occupation}\n###自身の強み###{matched_experience}\n###会社の事業内容###{business_content}\n###文字数の下限###{lower_limit}\n###文字数の上限###{upper_limit}".format(occupation=occupation, matched_experience=experience, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
+        
+        #prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。#応募職種：{occupation}\n自身の強み{matched_experience}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, matched_experience=experience, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
     else:
-        prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。\n応募職種：{occupation}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
+        prompt = "###指示###新卒の就活生の立場で、サマーインターンの志望動機を考えてください。\n###応募職種###：{occupation}\n###会社の事業内容###{business_content}\n###文字数の下限###{lower_limit}\n###文字数の上限###{upper_limit}".format(occupation=occupation, matched_experience=experience, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
+        #prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。\n応募職種：{occupation}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
 
     # 対話の初期化
     chat_history = []
@@ -22,6 +25,12 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
     while flag == False:
         if i == 10:
             return "10回以内に文字数の範囲内に収まる文章を生成できませんでした。"
+        
+        if len(chat_history) > 4:
+            delete_num = len(chat_history) - 4
+            #配列の先頭から要素を削除
+            for i in range(delete_num):
+                chat_history.pop(0)
         
         chat_history.append(f"ユーザー: {prompt}")
         
