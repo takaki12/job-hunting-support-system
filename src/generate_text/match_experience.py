@@ -24,10 +24,10 @@ def match_experience(condition, experience):
     #if "1部マッチしている" in response:
     #    return 1
     if "マッチしている" in response:
-        return experience
+        return 1
     
     elif "マッチしていない" in response:
-        return ""
+        return 0
     
     #エラー処理はまた後で考える（もう一度判定させるのかどうか）
     else:

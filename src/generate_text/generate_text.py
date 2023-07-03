@@ -8,7 +8,10 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
     #採用条件とマッチする経験を取得
     matched_experience = match_experience(condition, experience)
     
-    prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。\n応募職種：{occupation}\n自身の強み{matched_experience}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, matched_experience=matched_experience, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
+    if matched_experience == 1:
+        prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。\n応募職種：{occupation}\n自身の強み{matched_experience}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, matched_experience=experience, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
+    else:
+        prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。\n応募職種：{occupation}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
 
     # 対話の初期化
     chat_history = []
@@ -57,4 +60,4 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
         
         i += 1
         """if i == 10:
-            return "10回以内に文字数の範囲内に収まる文章を生成できませんでした。""""
+            return "10回以内に文字数の範囲内に収まる文章を生成できませんでした。"""
