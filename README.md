@@ -21,6 +21,7 @@
 │   │   ├── admin.html  
 │   │   ├── main.html  
 │   │   ├── mypage.html  
+│   │   ├── own_update.html  
 │   │   ├── signin.html  
 │   │   ├── signup.html  
 │   │   └── top.html  
@@ -35,10 +36,11 @@
   - generate_text : 文章生成プログラム
   - static : cssやJavaScriptなど
   - templates : htmlなど  
-    - admin_update : ユーザ情報の編集  
+    - admin_update : ユーザ情報の編集(管理者)  
     - admin : 管理者用ページ(ユーザ一覧とそれらの編集、削除)  
     - main : メインページ  
     - mypage : ユーザの情報の参照・変更ページ  
+    - own_update : ユーザ情報の編集(ユーザ自身)
     - signin : サインイン
     - signup : サインアップ  
     - top : ログインとサインインにつなぐトップページ  
