@@ -1,8 +1,7 @@
 import os
 import random
 import string
-from flask import Flask
-from flask import render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_login import login_user, LoginManager, login_manager, login_required, logout_user, UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -39,10 +38,9 @@ def top():
     return render_template('top.html')
 
 # メインページ
-@app.route('/main', methods=['GET', 'POST'])
+@app.route('/main/<string:id>', methods=['GET', 'POST'])
 @login_required
-def main():
-    id = request.form.get('id')
+def main(id):
     if request.method == 'POST':
         # テキスト生成
         lower = request.form.get('lower')
@@ -124,7 +122,7 @@ def signup():
 # サインアップ確認
 @app.route('/signup_confirm')
 def signup_confirm():
-    return redirect('signup_confirm.html')
+    return redirect('/signup_confirm')
 
 # サインイン
 @app.route('/signin', methods=['GET', 'POST'])
@@ -137,7 +135,7 @@ def signin():
         # パスワードチェック
         if check_password_hash(user.password, password):
             login_user(user)
-            return render_template('main.html', id=id)
+            return redirect(url_for('main', id=id))
     else:
         return render_template('signin.html')
 
@@ -145,7 +143,7 @@ def signin():
 @app.route('/signout')
 def signout():
     logout_user()
-    return redirect('/signin')
+    return redirect('/')
 
 # ログイン済みユーザの情報を取得
 @login_manager.user_loader
