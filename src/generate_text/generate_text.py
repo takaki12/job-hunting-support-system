@@ -47,6 +47,7 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
         # モデルの返答を出力
         print("GPTモデル:", model_response)
         print("文字数：", len(model_response))
+        print(type(len(model_response)), type(lower_limit), type(upper_limit))
         
         if lower_limit <= len(model_response) <= upper_limit:
             flag = True
@@ -61,3 +62,13 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
         i += 1
         """if i == 10:
             return "10回以内に文字数の範囲内に収まる文章を生成できませんでした。"""
+        
+if __name__=='__main__':
+    occupation = "プログラマー"
+    condition = "プログラミング経験あり"
+    experience = "Python 3年"
+    business_content = "ECシステム運用・構築など" 
+    lower_limit = 100
+    upper_limit = 200
+    output = generate_text(occupation, condition, experience, business_content, lower_limit, upper_limit)
+    print(output)
