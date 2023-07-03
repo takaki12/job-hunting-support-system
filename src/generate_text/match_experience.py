@@ -33,3 +33,8 @@ def match_experience(condition, experience):
     else:
         return 3
     
+if __name__=='__main__':
+    condition = "プログラミング経験あり"
+    experience = "漢字検定 準一級"
+    result = match_experience(condition=condition, experience=experience)
+    print(result)
