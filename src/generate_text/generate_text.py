@@ -23,12 +23,12 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
         
         # OpenAI APIを使用して応答を生成
         response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        temperature=0.5,
-        messages=[
-            {"role": "user", "content": input_text},
-        ]
-    )
+            model="gpt-3.5-turbo",
+            temperature=0.5,
+            messages=[
+                {"role": "user", "content": input_text},
+            ]
+        )
 
         
         # 応答からモデルの返答を取得
