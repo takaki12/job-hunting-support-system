@@ -21,12 +21,14 @@ def match_experience(condition, experience):
     
     response = response["choices"][0]["message"]["content"]
     
-    if "1部マッチしている" in response:
-        return 1
-    elif "マッチしている" in response:
-        return 2
+    #if "1部マッチしている" in response:
+    #    return 1
+    if "マッチしている" in response:
+        return experience
+    
     elif "マッチしていない" in response:
-        return 0
+        return ""
+    
     #エラー処理はまた後で考える（もう一度判定させるのかどうか）
     else:
         return 3
