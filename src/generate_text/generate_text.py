@@ -17,6 +17,9 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
     flag = False
 
     while flag == False:
+        if i == 10:
+            return "10回以内に文字数の範囲内に収まる文章を生成できませんでした。"
+        
         chat_history.append(f"ユーザー: {prompt}")
         
         input_text = prompt='\n'.join(chat_history)
@@ -52,5 +55,6 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
             difference = len(model_response) - upper_limit
             prompt = "文字数が多いです。{difference}文字程度削除してください。".format(difference=difference + 10)
         
-        if i == 10:
-            return "10回以内に文字数の範囲内に収まる文章を生成できませんでした。"
+        i += 1
+        """if i == 10:
+            return "10回以内に文字数の範囲内に収まる文章を生成できませんでした。""""
