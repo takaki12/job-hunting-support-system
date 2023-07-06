@@ -2,3 +2,4 @@
 src/__pycache__/
 .gitignore
 src/test.py
+src/generate_text.py

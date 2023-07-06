@@ -45,7 +45,6 @@
     - signup : サインアップ  
     - top : ログインとサインインにつなぐトップページ  
   - app.py : webシステムと各ページの定義  
-  - generate_text.py : 志望動機を生成する  
 - requirements.txt : 必要ライブラリ  
 - run.sh : システム起動  
 
