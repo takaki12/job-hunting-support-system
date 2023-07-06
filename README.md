@@ -25,8 +25,7 @@
 │   │   ├── signin.html  
 │   │   ├── signup.html  
 │   │   └── top.html  
-│   ├── app.py  
-│   └── generate_text.py  
+│   └── app.py  
 ├── requirements.txt  
 └── run.sh
 </pre>
