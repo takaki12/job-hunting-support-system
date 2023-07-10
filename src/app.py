@@ -6,7 +6,8 @@ from flask_login import login_user, LoginManager, login_manager, login_required,
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 
-from generate_text import generate
+# from generate import generate
+from generate_text.generate_text import generate_text
 
 
 app = Flask(__name__)
@@ -41,12 +42,18 @@ def top():
 @app.route('/main/<string:id>', methods=['GET', 'POST'])
 @login_required
 def main(id):
+    user = load_user(id)
     if request.method == 'POST':
         # テキスト生成
-        lower = request.form.get('lower')
-        upper = request.form.get('upper')
-        print(lower, upper)
-        output = generate(lower, upper)
+        occupation = "データサイエンティスト"
+        condition = "プログラミング経験あり"
+        experience = request.form.get('experience')
+        business_content = "私たちが便利で快適な生活を営む上でかかせない社会インフラ。交通・情報・セキュリティなど安全・安心・快適な社会を支えるためのシステムづくりが住友電工システムソリューションの仕事です。"
+        lower = int(request.form.get('lower'))
+        upper = int(request.form.get('upper'))
+        # print(lower, upper)
+        # output = generate(lower, upper)
+        output = generate_text(occupation, condition, experience, business_content, lower, upper)
         return render_template('main.html', output=output, id=id)
     else:
         return render_template('main.html', id=id)
