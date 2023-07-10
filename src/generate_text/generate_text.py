@@ -27,10 +27,9 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
             return "10回以内に文字数の範囲内に収まる文章を生成できませんでした。"
         
         if len(chat_history) > 4:
-            delete_num = len(chat_history) - 4
             #配列の先頭から要素を削除
-            for i in range(delete_num):
-                chat_history.pop(0)
+            chat_history.pop(2)
+            chat_history.pop(2)
         
         chat_history.append(f"ユーザー: {prompt}")
         
@@ -48,25 +47,26 @@ def generate_text(occupation, condition, experience, business_content, lower_lim
         
         # 応答からモデルの返答を取得
         model_response = response["choices"][0]["message"]["content"]
+        model_response = model_response.replace("GPTモデル: ", "")
         
         # チャット履歴にモデルの返答を追加
         chat_history.append(f"GPTモデル: {model_response}")
         
         
         # モデルの返答を出力
-        print("GPTモデル:", model_response)
+        print(model_response)
         print("文字数：", len(model_response))
-        print(type(len(model_response)), type(lower_limit), type(upper_limit))
+        # print(type(len(model_response)), type(lower_limit), type(upper_limit))
         
         if lower_limit <= len(model_response) <= upper_limit:
             flag = True
             return model_response
         elif len(model_response) < lower_limit:
             difference = lower_limit - len(model_response)
-            prompt = "文字数が少ないです。{difference}文字程度追加してください。".format(difference=difference - 10)
+            prompt = "文字数が少ないです。{difference}文字程度追加して、書き直してください。".format(difference=difference - 10)
         elif len(model_response) > upper_limit:
             difference = len(model_response) - upper_limit
-            prompt = "文字数が多いです。{difference}文字程度削除してください。".format(difference=difference + 10)
+            prompt = "文字数が多いです。{difference}文字程度削除して、書き直してください。".format(difference=difference + 10)
         
         i += 1
         """if i == 10:
@@ -77,7 +77,9 @@ if __name__=='__main__':
     condition = "プログラミング経験あり"
     experience = "Python 3年"
     business_content = "ECシステム運用・構築など" 
-    lower_limit = 100
-    upper_limit = 200
+    lower_limit = 360
+    upper_limit = 400
     output = generate_text(occupation, condition, experience, business_content, lower_limit, upper_limit)
+    print("--------------------")
     print(output)
+    print(len(output))
