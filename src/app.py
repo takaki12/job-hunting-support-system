@@ -47,7 +47,7 @@ def main(id):
         # テキスト生成
         occupation = "データサイエンティスト"
         condition = "プログラミング経験あり"
-        experience = request.form.get('experience')
+        experience = user.experience
         business_content = "私たちが便利で快適な生活を営む上でかかせない社会インフラ。交通・情報・セキュリティなど安全・安心・快適な社会を支えるためのシステムづくりが住友電工システムソリューションの仕事です。"
         lower = int(request.form.get('lower'))
         upper = int(request.form.get('upper'))
