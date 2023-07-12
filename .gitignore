@@ -1,6 +1,6 @@
 .venv
 src/__pycache__/
 src/generate_text/__pycache__/
-.gitignore
+src/generate
 src/test.py
-src/generate.py
+.gitignore
