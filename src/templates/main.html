@@ -21,7 +21,7 @@
             企業 <input type="text" name="company_name" list="companies" placeholder="テキスト入力もしくはダブルクリック" autocomplete="off">
               <datalist id="companies">
                 {% for company in companies %}
-                    <option value={{company.company_name}}>
+                    <option value={{company.company_name}} data-id={{company.company_id}}>
                 {% endfor %}
               </datalist>
               <input type="submit" value="&#xf1d8;" class="fas send-button">
