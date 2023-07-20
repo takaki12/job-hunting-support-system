@@ -17,14 +17,14 @@
         <form id="inputForm", method="POST" autocomplete="off" class='input-form'>
             <input type="text" name="lower" id="lower-limit" class="form">
             <input type="text" name="upper" id="upper-limit" class="form">
-            <input type="submit" value="&#xf1d8;" class="fas send-button">
-        </form>
-        <form action="select company">
-            企業 <input type="text" name="a" list="companies" placeholder="テキスト入力もしくはダブルクリック" autocomplete="off">
+
+            企業 <input type="text" name="company_name" list="companies" placeholder="テキスト入力もしくはダブルクリック" autocomplete="off">
               <datalist id="companies">
-                <option value="任天堂">
-                <option value="copcom">
+                {% for company in companies %}
+                    <option value={{company.company_name}}>
+                {% endfor %}
               </datalist>
+              <input type="submit" value="&#xf1d8;" class="fas send-button">
         </form>
         <p class="output">{{output}}</p>
     </body>
