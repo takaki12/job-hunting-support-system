@@ -58,7 +58,8 @@ def top():
         db.session.commit()
     
     scope = ["https://spreadsheets.google.com/feeds","https://www.googleapis.com/auth/drive"]
-    json = "/Users/ttt/Documents/Master2023/デジタルコンテンツ特論/celest-393403-927fcb61c0da.json"
+    # 個人で合わせる
+    json = "/home/tonaga/db-contents/job-hunting-support-system/spreedsheet_api_celeste.json"
     creadentials = ServiceAccountCredentials.from_json_keyfile_name(json, scope)
     gc = gspread.authorize(creadentials)
 
@@ -82,6 +83,7 @@ def top():
 @login_required
 def main(id):
     user = load_user(id)
+    companies = CompanyInformation.query.all()
     if request.method == "POST":
         # テキスト生成
         occupation = "データサイエンティスト"
@@ -90,12 +92,13 @@ def main(id):
         business_content = "私たちが便利で快適な生活を営む上でかかせない社会インフラ。交通・情報・セキュリティなど安全・安心・快適な社会を支えるためのシステムづくりが住友電工システムソリューションの仕事です。"
         lower = int(request.form.get("lower"))
         upper = int(request.form.get("upper"))
+        company_name = request.form.get("company_name")
         # print(lower, upper)
-        # output = generate(lower, upper)
-        output = generate_text(occupation, condition, experience, business_content, lower, upper)
-        return render_template("main.html", output=output, id=id)
+        output = company_name
+        #output = generate_text(occupation, condition, experience, business_content, lower, upper)
+        return render_template("main.html", output=output, id=id, companies=companies)
     else:
-        return render_template("main.html", id=id)
+        return render_template("main.html", id=id, companies=companies)
 
 # マイページ
 @app.route("/mypage/<string:id>")
