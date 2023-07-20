@@ -1,5 +1,5 @@
 import openai
-from match_experience import match_experience
+from generate_text.match_experience import match_experience
 
 openai.api_key = "" #前述で発行したAPIをKeyに置き換えてください
 

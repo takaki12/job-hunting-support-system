@@ -32,6 +32,7 @@ class UserInformation(UserMixin, users_db.Model):
     name = users_db.Column(users_db.String(20), nullable=False)
     password = users_db.Column(users_db.String(100), nullable=False)
     experience = users_db.Column(users_db.String(500), nullable=False)
+    weakness = users_db.Column(users_db.String(500), nullable=False)
 
 # トップページ
 @app.route('/')
@@ -74,6 +75,7 @@ def own_update(id):
         user.id = request.form.get('id')
         user.name = request.form.get('name')
         user.experience = request.form.get('experience')
+        user.weakness = request.form.get('weakness')
         users_db.session.commit()
         id = user.id
         # logout_user()
@@ -97,6 +99,7 @@ def admin_update(id):
         user.id = request.form.get('id')
         user.name = request.form.get('name')
         user.experience = request.form.get('experience')
+        user.weakness = request.form.get('weakness')
         users_db.session.commit()
         return redirect('/admin')
     else:
@@ -118,11 +121,12 @@ def signup():
         name = request.form.get('name')
         password = request.form.get('password')
         experience = request.form.get('experience')
+        weakness = request.form.get('weakness')
         # DBに登録
-        user = UserInformation(id=id, name=name, password=generate_password_hash(password, method='sha256'), experience=experience)
+        user = UserInformation(id=id, name=name, password=generate_password_hash(password, method='sha256'), experience=experience, weakness=weakness)
         users_db.session.add(user)
         users_db.session.commit()
-        return render_template('signup_confirm.html', id=id, name=name, password=password, experience=experience)
+        return render_template('signup_confirm.html', id=id, name=name, password=password, experience=experience, weakness=weakness)
     else:
         return render_template('signup.html')
     
