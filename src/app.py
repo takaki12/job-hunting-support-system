@@ -59,7 +59,7 @@ def top():
     
     scope = ["https://spreadsheets.google.com/feeds","https://www.googleapis.com/auth/drive"]
     # 個人で合わせる
-    json = "/home/tonaga/db-contents/job-hunting-support-system/spreedsheet_api_celeste.json"
+    json = "/Users/ttt/Documents/Master2023/デジタルコンテンツ特論/celest-393403-927fcb61c0da.json"
     creadentials = ServiceAccountCredentials.from_json_keyfile_name(json, scope)
     gc = gspread.authorize(creadentials)
 
@@ -70,8 +70,9 @@ def top():
     # num_id = 1
     for i in range(len(company_df)):
         if company_df["企業名"][i] != "":
+            company_name = company_df["企業名"][i] + "-" + company_df["職種"][i]
             # DBに企業情報登録
-            company = CompanyInformation(company_name=company_df["企業名"][i], purpose=company_df["企業理念・MVV"][i], occupation=company_df["職種"][i], industry=company_df["業種"][i], condition=company_df["条件"][i], recruitment_type=company_df["インターン/採用"][i], business_content=company_df["業務内容"][i], company_info=company_df["参考リンク(企業情報)"][i], recruitment_info=company_df["参考リンク(就職情報)"][i])
+            company = CompanyInformation(company_name=company_name, purpose=company_df["企業理念・MVV"][i], occupation=company_df["職種"][i], industry=company_df["業種"][i], condition=company_df["条件"][i], recruitment_type=company_df["インターン/採用"][i], business_content=company_df["業務内容"][i], company_info=company_df["参考リンク(企業情報)"][i], recruitment_info=company_df["参考リンク(就職情報)"][i])
             db.session.add(company)
             db.session.commit()
             # num_id += 1
