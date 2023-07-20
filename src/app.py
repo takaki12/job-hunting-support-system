@@ -93,6 +93,7 @@ def main(id):
         lower = int(request.form.get("lower"))
         upper = int(request.form.get("upper"))
         company_name = request.form.get("company_name")
+        
         # print(lower, upper)
         output = company_name
         #output = generate_text(occupation, condition, experience, business_content, lower, upper)
