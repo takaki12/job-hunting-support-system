@@ -87,16 +87,21 @@ def main(id):
     companies = CompanyInformation.query.all()
     if request.method == "POST":
         # テキスト生成
-        occupation = "データサイエンティスト"
-        condition = "プログラミング経験あり"
         experience = user.experience
-        business_content = "私たちが便利で快適な生活を営む上でかかせない社会インフラ。交通・情報・セキュリティなど安全・安心・快適な社会を支えるためのシステムづくりが住友電工システムソリューションの仕事です。"
         lower = int(request.form.get("lower"))
         upper = int(request.form.get("upper"))
         company_name = request.form.get("company_name")
-        
-        # print(lower, upper)
-        output = company_name
+        company = CompanyInformation.query.filter_by(company_name=company_name).first()
+    # company_name
+    # purpose 
+    # occupation
+    # industry
+    # condition
+    # recruitment_type
+    # business_content
+    # company_info
+    # recruitment_info
+        output = company.company_name + "\n" + company.purpose + "\n" + company.occupation + "\n" + company.industry + "\n" + company.condition + "\n" + company.recruitment_type + "\n" + company.business_content + "\n" + company.company_info + "\n" + company.recruitment_info
         #output = generate_text(occupation, condition, experience, business_content, lower, upper)
         return render_template("main.html", output=output, id=id, companies=companies)
     else:
