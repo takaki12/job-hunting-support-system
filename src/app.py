@@ -5,10 +5,15 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_login import login_user, LoginManager, login_manager, login_required, logout_user, UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 # from generate import generate
 from generate_text.generate_text import generate_text
 
+# scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+# json = "/Users/ttt/Documents/Master2023/デジタルコンテンツ特論/celest-393403-927fcb61c0da.json"
+# creadentials = ServiceAccountCredentials.from_json_keyfile_name(json, scope)
 
 app = Flask(__name__)
 # データベースの設定
