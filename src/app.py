@@ -94,10 +94,9 @@ def main(id):
         occupation = company.occupation
         condition = company.condition
         experience = user.experience
-        weakness = user.weakness
         business_content = company.business_content
         purpose = company.purpose
-        output = generate_text(occupation, condition, experience, weakness, business_content, purpose, lower, upper)
+        output = generate_text(occupation, condition, experience, business_content, purpose, lower, upper)
         return render_template("main.html", output=output, id=id, companies=companies)
     else:
         return render_template("main.html", id=id, companies=companies)

@@ -3,7 +3,7 @@
 
 import openai
 
-openai.api_key = ""
+openai.api_key = " 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"
 
 #condition:採用条件　experience:自身の経験
 def match_experience(condition, experience):
