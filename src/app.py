@@ -59,7 +59,7 @@ def top():
     
     scope = ["https://spreadsheets.google.com/feeds","https://www.googleapis.com/auth/drive"]
     # 個人で合わせる
-    json = "./spreedsheet_api_celeste.json"
+    json = "./spreadsheet_api_celeste.json"
     creadentials = ServiceAccountCredentials.from_json_keyfile_name(json, scope)
     gc = gspread.authorize(creadentials)
 
