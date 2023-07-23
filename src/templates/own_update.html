@@ -10,12 +10,18 @@
         <form method="POST">
             <label for="id">ユーザーID</label>
             <input type="id" name="id" value={{user.id}}>
+            <br>
             <label for="name">名前</label>
             <input type="text" name="name" value={{user.name}}>
+            <br>
             <label for="experience">自身の経験・強み</label>
-            <input type="text" name="experience" value={{user.experience}}>
+            <br>
+            <textarea name="experience" value={{user.experience}}>{{user.experience}}</textarea>
+            <br>
             <label for="weakness">自身の弱み</label>
-            <input type="text" name="weakness" value={{user.weakness}}>
+            <br>
+            <textarea name="weakness" value={{user.weakness}}>{{user.weakness}}</textarea>
+            <br>
             <input type="submit" value="更新" onclick="location.href='/mypage/{{id}}'">
         </form>
     </body>
