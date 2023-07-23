@@ -133,3 +133,9 @@ h1.name {
     width: 500px;
     padding: 10px;
 }
+
+.large_text_form {
+    display: inline-block;
+    width: 70%;
+    height: 6em;
+}
