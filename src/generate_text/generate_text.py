@@ -1,7 +1,7 @@
 import openai
 from generate_text.match_experience import match_experience
 
-openai.api_key = " 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" #前述で発行したAPIをKeyに置き換えてください
+openai.api_key = "" #前述で発行したAPIをKeyに置き換えてください
 
 def generate_text(occupation, condition, experience, business_content, purpose, lower_limit, upper_limit):
     
