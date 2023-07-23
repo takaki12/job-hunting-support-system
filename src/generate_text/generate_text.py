@@ -9,11 +9,11 @@ def generate_text(occupation, condition, experience, weakness, business_content,
     matched_experience = match_experience(condition, experience)
     
     if matched_experience == 1:
-        prompt = "###指示###新卒の就活生の立場で、サマーインターンの志望動機を考えてください。企業理念はそのまま使わないでください。自身の弱みはそのまま使わずポジティブに変換してください。会社名はそのまま使わず貴社に変換してください。\n###応募職種###：{occupation}\n###自身の強み###{matched_experience}\n###自身の弱み###{weakness}\n###会社の事業内容###{business_content}\n###企業理念###{purpose}\n###文字数の下限###{lower_limit}\n###文字数の上限###{upper_limit}".format(occupation=occupation, matched_experience=experience, business_content=business_content, purpose=purpose, lower_limit=lower_limit, upper_limit=upper_limit)
+        prompt = "###指示###新卒の就活生の立場で、サマーインターンの志望動機を考えてください。企業理念はそのまま使わないでください。自身の弱みはそのまま使わずポジティブに変換してください。会社名はそのまま使わず貴社に変換してください。\n###応募職種###：{occupation}\n###自身の強み###{matched_experience}\n###自身の弱み###{weakness}\n###会社の事業内容###{business_content}\n###企業理念###{purpose}\n###文字数の下限###{lower_limit}\n###文字数の上限###{upper_limit}".format(occupation=occupation, matched_experience=experience, weakness=weakness, business_content=business_content, purpose=purpose, lower_limit=lower_limit, upper_limit=upper_limit)
         
         #prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。#応募職種：{occupation}\n自身の強み{matched_experience}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, matched_experience=experience, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
     else:
-        prompt = "###指示###新卒の就活生の立場で、サマーインターンの志望動機を考えてください。企業理念はそのまま使わないでください。自身の弱みはそのまま使わずポジティブに変換してください。会社名はそのまま使わず貴社に変換してください。\n###応募職種###：{occupation}\n###自身の弱み###{weakness}\n###会社の事業内容###{business_content}\n###企業理念###{purpose}\n###文字数の下限###{lower_limit}\n###文字数の上限###{upper_limit}".format(occupation=occupation, matched_experience=experience, business_content=business_content, purpose=purpose, lower_limit=lower_limit, upper_limit=upper_limit)
+        prompt = "###指示###新卒の就活生の立場で、サマーインターンの志望動機を考えてください。企業理念はそのまま使わないでください。自身の弱みはそのまま使わずポジティブに変換してください。会社名はそのまま使わず貴社に変換してください。\n###応募職種###：{occupation}\n###自身の弱み###{weakness}\n###会社の事業内容###{business_content}\n###企業理念###{purpose}\n###文字数の下限###{lower_limit}\n###文字数の上限###{upper_limit}".format(occupation=occupation, matched_experience=experience, weakness=weakness, business_content=business_content, purpose=purpose, lower_limit=lower_limit, upper_limit=upper_limit)
         #prompt = "新卒就活の志望動機を、以下の情報を踏まえて考えてください。\n応募職種：{occupation}\n会社の事業内容{business_content}\nまた、出力は、次の文字数の範囲に納めてください。文字数の下限：{lower_limit}, 上限：{upper_limit}".format(occupation=occupation, business_content=business_content, lower_limit=lower_limit, upper_limit=upper_limit)
 
     # 対話の初期化
