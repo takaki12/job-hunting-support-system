@@ -15,9 +15,9 @@
             </ul>
         </header>
         <form id="inputForm", method="POST" autocomplete="off" class='input-form'>
-            <input type="text" name="lower" id="lower-limit" class="form">
-            <input type="text" name="upper" id="upper-limit" class="form">
-
+            <input type="text" name="lower" id="lower-limit" class="form" placeholder="最小文字数">
+            <input type="text" name="upper" id="upper-limit" class="form" placeholder="最大文字数">
+            <br>
             企業 <input type="text" name="company_name" list="companies" placeholder="テキスト入力もしくはダブルクリック" autocomplete="off">
               <datalist id="companies">
                 {% for company in companies %}
