@@ -47,24 +47,23 @@
 - requirements.txt : 必要ライブラリ  
 - run.sh : システム起動  
 
-## マイページ
-ユーザ情報 : 名前(text), 強み(text)  
-
 ## 実行手順
 クローン
 ```
 $ git clone https://github.com/takaki12/job-hunting-support-system.git
 ```
-python3.10以上のvenvを作成し、必要なライブラリをインポートする
+python3.10以上のvenvを作成し、必要なライブラリをインポートする  
 ```
 $ python3 -m venv .venv
 $ pip install -r requirements.txt
 ```
-システム立ち上げ(バックグラウンド推奨)
+このとき、プロジェクトディレクトリ直下にスプレッドシートAPIのキー情報jsonファイルを置く。  
+また、所定の場所にOpenAIのAPIキーを入れる。  
+システム立ち上げ(バックグラウンド推奨)  
 ```
 ./run.sh
 ```
-以下のURLをブラウザで開く
+以下のURLをブラウザで開く  
 ```
 http://127.0.0.1:5000
 ```
