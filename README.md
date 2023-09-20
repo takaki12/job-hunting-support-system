@@ -1,11 +1,15 @@
 # job-hunting-support-system
 企業データを用いた就活支援システムの構築
 
-# 概要
+## 概要
 - 自分の経験、強み、弱みを登録する
 - 企業データベース内にある企業を選択し、その企業に合わせた志望動機を生成する
 
-# 
+## システムイメージ
+### トップ画面
+![top](https://github.com/takaki12/job-hunting-support-system/assets/96226017/de42b064-6cce-4d2a-a750-929de66fa55c)
+
+
 ## フォルダ構造
 <pre>
 .  
