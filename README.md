@@ -18,10 +18,11 @@
 ![signin](https://github.com/takaki12/job-hunting-support-system/assets/96226017/f6217081-776b-437a-a7db-8873339389ed)
 
 ### 生成設定画面
-企業をプルダウンメニューから選択し、サインインしているユーザの情報を踏まえて文章を生成する
+文字数の下限と上限を設定する  
+企業をプルダウンメニューから選択し、サインインしているユーザの情報を踏まえて文章を生成
+![input](https://github.com/takaki12/job-hunting-support-system/assets/96226017/4efc4ed0-a534-4741-afc5-fef3b2db26cb)
 
-
-
+# リポジトリの概要
 ## フォルダ構造
 <pre>
 .  
@@ -68,7 +69,7 @@
 - requirements.txt : 必要ライブラリ  
 - run.sh : システム起動  
 
-## 実行手順
+# 実行手順
 クローン
 ```
 $ git clone https://github.com/takaki12/job-hunting-support-system.git
