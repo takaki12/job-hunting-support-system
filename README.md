@@ -10,7 +10,12 @@
 ![top](https://github.com/takaki12/job-hunting-support-system/assets/96226017/de42b064-6cce-4d2a-a750-929de66fa55c)
 
 ### サインアップ
-経験や強み・弱みといった個人の情報を登録する。
+経験や強み・弱みといった個人の情報を登録する
+![signup](https://github.com/takaki12/job-hunting-support-system/assets/96226017/f882d80e-9770-4794-abfe-7c8e08d7e591)
+
+### サインイン
+サインアップ時に登録したユーザ名とパスワードでサインインする
+
 
 
 ## フォルダ構造
